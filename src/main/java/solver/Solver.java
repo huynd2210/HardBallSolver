@@ -18,24 +18,14 @@ public class Solver {
         return nextStates;
     }
 
-//    public static List<String> solve(Board board) {
-//        boolean isBallFound = MovementLogic.findBallLocation(board).getValue0() != -1;
-//        List<String> moveList = new ArrayList<>();
-//        return solve(board, isBallFound, moveList);
-//    }
-
-
     public static List<String> solve(Board board){
         List<String> moveList = new ArrayList<>();
-
         List<Pair<Board, String>> childStates = new ArrayList<>(getNextStates(board));
-
         List<Triplet<Board, String, List<String>>> stateData = new ArrayList<>();
 
         for (Pair<Board, String> pairData : childStates) {
             stateData.add(pairData.addAt2(moveList));
         }
-
         while(!stateData.isEmpty()){
             Triplet<Board, String, List<String>> data = stateData.get(0);
             data = data.setAt2(new ArrayList<>(data.getValue2()));
@@ -56,19 +46,4 @@ public class Solver {
         System.out.println("Illegal return");
         return null;
     }
-
-//    private static List<String> solve(Board board, boolean isBallFound, List<String> currentMoveList) {
-//        if (isBallFound) {
-//            Set<Pair<Board, String>> childStates = getNextStates(board);
-//            for (Pair<Board, String> childStateData : childStates) {
-//                int ballLocation = MovementLogic.findBallLocation(childStateData.getValue0()).getValue0();
-//                if (ballLocation == -1) {
-//                    isBallFound = false;
-//                }
-//                solve(childStateData.getValue0(), isBallFound, new ArrayList<>(currentMoveList));
-//            }
-//        } else {
-//            return currentMoveList;
-//        }
-//    }
 }
