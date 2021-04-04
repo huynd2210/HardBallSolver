@@ -7,9 +7,9 @@ import pojo.Item;
 public class BoardLogic {
     public static Board initSampleBoard(){
         Board sampleBoard = initEmptyBoard(5,5);
-        addItem(sampleBoard, Item.BASKET, 2,3);
-        addItem(sampleBoard, Item.BALL, 2,4);
-        addItem(sampleBoard, Item.WALL, 2,1);
+        addItem(sampleBoard, Item.BASKET, 3,2    );
+        addItem(sampleBoard, Item.BALL, 2,2);
+        addItem(sampleBoard, Item.WALL, 2,0);
         return sampleBoard;
     }
 

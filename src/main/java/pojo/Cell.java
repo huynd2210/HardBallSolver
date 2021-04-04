@@ -4,7 +4,6 @@ import lombok.*;
 
 @Getter
 @Setter
-@EqualsAndHashCode
 public class Cell {
     private Item item;
 
@@ -34,5 +33,20 @@ public class Cell {
         }
         sb.append("]");
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cell)) return false;
+
+        Cell cell = (Cell) o;
+
+        return item == cell.item;
+    }
+
+    @Override
+    public int hashCode() {
+        return item != null ? item.hashCode() : 0;
     }
 }
